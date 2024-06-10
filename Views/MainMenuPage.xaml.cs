@@ -4,10 +4,10 @@ namespace Flappy_Miau.Views;
 
 public partial class MainMenuPage : ContentPage
 {
-    public MainMenuPage()
+    public MainMenuPage(MainMenuViewModel mainMenuViewModel)
     {
         InitializeComponent();
 
-        BindingContext = new MainMenuViewModel();
+        BindingContext = mainMenuViewModel;
     }
 }
