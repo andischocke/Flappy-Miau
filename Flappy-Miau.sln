@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flappy-Miau", "Flappy-Miau.csproj", "{347ED36B-5CCA-4210-ABE2-1138F6ACD2BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{347ED36B-5CCA-4210-ABE2-1138F6ACD2BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347ED36B-5CCA-4210-ABE2-1138F6ACD2BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347ED36B-5CCA-4210-ABE2-1138F6ACD2BF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{347ED36B-5CCA-4210-ABE2-1138F6ACD2BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347ED36B-5CCA-4210-ABE2-1138F6ACD2BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{347ED36B-5CCA-4210-ABE2-1138F6ACD2BF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2561E365-B4EC-48C2-95DE-76CFC8D4F647}
+	EndGlobalSection
+EndGlobal
