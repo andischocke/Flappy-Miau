@@ -1,8 +1,6 @@
 ﻿<maui:MauiWinUIApplication
-    x:Class="Flappy_Miau.WinUI.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:maui="using:Microsoft.Maui"
-    xmlns:local="using:Flappy_Miau.WinUI">
-
-</maui:MauiWinUIApplication>
+    xmlns:local="using:Flappy_Miau.WinUI"
+    x:Class="Flappy_Miau.WinUI.App"></maui:MauiWinUIApplication>
