@@ -16,15 +16,36 @@
             <Button
                 Text="{x:Static localization:AppResources.NewGame}"
                 Command="{Binding NewGameCommand}"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill">
+                <Button.ImageSource>
+                    <FontImageSource
+                        FontFamily="FontAwesome"
+                        Glyph="{StaticResource Play}"
+                        Color="Green" />
+                </Button.ImageSource>
+            </Button>
             <Button
                 Text="{x:Static localization:AppResources.HighScore}"
                 Command="{Binding HighScoreCommand}"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill">
+                <Button.ImageSource>
+                    <FontImageSource
+                        FontFamily="FontAwesome"
+                        Glyph="{StaticResource Star}"
+                        Color="Gold" />
+                </Button.ImageSource>
+            </Button>
             <Button
                 Text="{x:Static localization:AppResources.ExitGame}"
                 Command="{Binding ExitGameCommand}"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill">
+                <Button.ImageSource>
+                    <FontImageSource
+                        FontFamily="FontAwesome"
+                        Glyph="{StaticResource Stop}"
+                        Color="Red" />
+                </Button.ImageSource>
+            </Button>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
