@@ -3,9 +3,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewModels="clr-namespace:Flappy_Miau.ViewModels"
+    xmlns:localization="clr-namespace:Flappy_Miau.Resources.Localization"
     x:Class="Flappy_Miau.Views.MainMenuPage"
     x:DataType="viewModels:MainMenuViewModel"
-    Title="{Binding MainMenu}">
+    Title="{x:Static localization:AppResources.MainMenu}">
     <ScrollView>
         <VerticalStackLayout
             WidthRequest="200"
@@ -13,15 +14,15 @@
             VerticalOptions="Center"
             Spacing="10">
             <Button
-                Text="{Binding NewGameButton}"
+                Text="{x:Static localization:AppResources.NewGame}"
                 Command="{Binding NewGameCommand}"
                 HorizontalOptions="Fill" />
             <Button
-                Text="{Binding HighScoreButton}"
+                Text="{x:Static localization:AppResources.HighScore}"
                 Command="{Binding HighScoreCommand}"
                 HorizontalOptions="Fill" />
             <Button
-                Text="{Binding ExitGameButton}"
+                Text="{x:Static localization:AppResources.ExitGame}"
                 Command="{Binding ExitGameCommand}"
                 HorizontalOptions="Fill" />
         </VerticalStackLayout>
