@@ -31,12 +31,16 @@ public static class MauiProgram
 
     public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
     {
+        mauiAppBuilder.Services.AddTransient<GameViewModel>();
+        mauiAppBuilder.Services.AddTransient<HighScoreViewModel>();
         mauiAppBuilder.Services.AddTransient<MainMenuViewModel>();
         return mauiAppBuilder;
     }
 
     public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
     {
+        mauiAppBuilder.Services.AddTransient<GamePage>();
+        mauiAppBuilder.Services.AddTransient<HighScorePage>();
         mauiAppBuilder.Services.AddTransient<MainMenuPage>();
         return mauiAppBuilder;
     }

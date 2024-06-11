@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:Flappy_Miau.ViewModels"
+    xmlns:localization="clr-namespace:Flappy_Miau.Resources.Localization"
+    x:Class="Flappy_Miau.Views.GamePage"
+    x:DataType="viewModels:GameViewModel">
+    <VerticalStackLayout>
+        <Label
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
