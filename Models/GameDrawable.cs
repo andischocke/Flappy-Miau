@@ -10,6 +10,8 @@ public class GameDrawable : IDrawable
     private (RectF Upper, Rect Lower) Bounds { get; set; }
     private List<RectF> Obstacles { get; set; }
     private RectF Player { get; set; }
+    private float Velocity { get; set; }
+    private float Gravity { get; set; }
     public int Score { get; set; }
 
     public GameDrawable()
@@ -21,8 +23,14 @@ public class GameDrawable : IDrawable
         // Set terrain elements
         Bounds = (new RectF(0, 0, (float)DisplayWidth, 20), new RectF(0, (float)DisplayHeight - 20, (float)DisplayWidth, 20));
         Obstacles = new List<RectF>();
+
         // Set player size and position
         Player = new RectF((float)DisplayWidth / 2, (float)DisplayHeight / 2, 50, 50);
+        Velocity = 0f;
+        Gravity = 0.5f;
+
+        // Set initial score
+        Score = 0;
     }
 
     public void Draw(ICanvas canvas, RectF dirtyRect)
@@ -54,7 +62,7 @@ public class GameDrawable : IDrawable
             // Create a copy of the current obstacle because RectF is a struct
             RectF obstacle = Obstacles[i];
             // Move the obstacle to the left
-            obstacle.X -= 5f;
+            obstacle.X -= 6f;
             // Checks if the obstacle has completely moved off the screen to the left
             if (obstacle.X + obstacle.Width < 0)
             {
@@ -70,7 +78,8 @@ public class GameDrawable : IDrawable
         }
 
         // Update the player
-        float playerHeight = (Player.Y + 5) % (float)DisplayHeight;
+        Velocity = Math.Min(Velocity + Gravity, 5f);
+        float playerHeight = Player.Y + Velocity;
         Player = new RectF(Player.X, playerHeight, 50, 50);
         canvas.StrokeColor = Colors.Red;
         canvas.StrokeSize = 10;
@@ -82,6 +91,7 @@ public class GameDrawable : IDrawable
             // Reset the game
             Obstacles.Clear();
             Player = new RectF((float)DisplayWidth / 2, (float)DisplayHeight / 2, 100, 100);
+            Velocity = 0f;
             Score = 0;
             // Absolute navigation to the high score page
             Shell.Current.GoToAsync($"//{nameof(MainMenuPage)}");
@@ -91,5 +101,11 @@ public class GameDrawable : IDrawable
         canvas.FontColor = Colors.White;
         canvas.FontSize = 50;
         canvas.DrawString($"{AppResources.Score}: {Score}", 25, 25, 1000, 100, HorizontalAlignment.Left, VerticalAlignment.Top);
+    }
+
+    public void Touch()
+    {
+        // Set the player's velocity to a negative value to make it jump
+        Velocity = -10f;
     }
 }
