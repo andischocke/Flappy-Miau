@@ -95,5 +95,14 @@ namespace Flappy_Miau.Resources.Localization {
                 return ResourceManager.GetString("NewGame", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Score.
+        /// </summary>
+        internal static string Score {
+            get {
+                return ResourceManager.GetString("Score", resourceCulture);
+            }
+        }
     }
 }

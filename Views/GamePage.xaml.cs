@@ -9,5 +9,7 @@ public partial class GamePage : ContentPage
         InitializeComponent();
 
         BindingContext = gameViewModel;
+        // Set the InvalidateGraphicsView action to the Invalidate method of the GraphicsView
+        gameViewModel.InvalidateGraphicsView = () => GraphicsView.Invalidate();
     }
 }
