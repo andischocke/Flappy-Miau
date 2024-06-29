@@ -1,4 +1,5 @@
 ﻿using Flappy_Miau.Resources.Localization;
+using Flappy_Miau.Views;
 
 namespace Flappy_Miau.Models;
 
@@ -74,6 +75,17 @@ public class GameDrawable : IDrawable
         canvas.StrokeColor = Colors.Red;
         canvas.StrokeSize = 10;
         canvas.DrawRectangle(Player);
+
+        // Check if player collides with any bounds or obstacles
+        if (Player.IntersectsWith(Bounds.Upper) || Player.IntersectsWith(Bounds.Lower) || Obstacles.Any(obstacle => Player.IntersectsWith(obstacle)))
+        {
+            // Reset the game
+            Obstacles.Clear();
+            Player = new RectF((float)DisplayWidth / 2, (float)DisplayHeight / 2, 100, 100);
+            Score = 0;
+            // Absolute navigation to the high score page
+            Shell.Current.GoToAsync($"//{nameof(MainMenuPage)}");
+        }
 
         // Draw the score
         canvas.FontColor = Colors.White;
