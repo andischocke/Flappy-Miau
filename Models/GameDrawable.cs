@@ -8,6 +8,7 @@ public class GameDrawable : IDrawable
     private double DisplayHeight { get; set; }
     private (RectF Upper, Rect Lower) Bounds { get; set; }
     private List<RectF> Obstacles { get; set; }
+    private RectF Player { get; set; }
     public int Score { get; set; }
 
     public GameDrawable()
@@ -19,6 +20,8 @@ public class GameDrawable : IDrawable
         // Set terrain elements
         Bounds = (new RectF(0, 0, (float)DisplayWidth, 20), new RectF(0, (float)DisplayHeight - 20, (float)DisplayWidth, 20));
         Obstacles = new List<RectF>();
+        // Set player size and position
+        Player = new RectF((float)DisplayWidth / 2, (float)DisplayHeight / 2, 50, 50);
     }
 
     public void Draw(ICanvas canvas, RectF dirtyRect)
@@ -64,6 +67,13 @@ public class GameDrawable : IDrawable
                 canvas.FillRectangle(obstacle);
             }
         }
+
+        // Update the player
+        float playerHeight = (Player.Y + 5) % (float)DisplayHeight;
+        Player = new RectF(Player.X, playerHeight, 50, 50);
+        canvas.StrokeColor = Colors.Red;
+        canvas.StrokeSize = 10;
+        canvas.DrawRectangle(Player);
 
         // Draw the score
         canvas.FontColor = Colors.White;
