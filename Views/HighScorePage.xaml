@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Flappy_Miau.Models"
     xmlns:viewModels="clr-namespace:Flappy_Miau.ViewModels"
     xmlns:localization="clr-namespace:Flappy_Miau.Resources.Localization"
     x:Class="Flappy_Miau.Views.HighScorePage"
@@ -12,7 +13,7 @@
         ItemsSource="{Binding HighScores}">
         <CollectionView.ItemTemplate>
             <DataTemplate
-                x:DataType="viewModels:Score">
+                x:DataType="models:Score">
                 <Border>
                     <Grid
                         ColumnDefinitions="Auto, 500, Auto, Auto"

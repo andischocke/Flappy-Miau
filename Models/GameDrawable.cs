@@ -85,6 +85,11 @@ public class GameDrawable : IDrawable
         canvas.StrokeSize = 10;
         canvas.DrawRectangle(Player);
 
+        // Draw the score
+        canvas.FontColor = Colors.White;
+        canvas.FontSize = 50;
+        canvas.DrawString($"{AppResources.Score}: {Score}", 25, 25, 1000, 100, HorizontalAlignment.Left, VerticalAlignment.Top);
+
         // Check if player collides with any bounds or obstacles
         if (Player.IntersectsWith(Bounds.Upper) || Player.IntersectsWith(Bounds.Lower) || Obstacles.Any(obstacle => Player.IntersectsWith(obstacle)))
         {
@@ -96,11 +101,6 @@ public class GameDrawable : IDrawable
             // Absolute navigation to the high score page
             Shell.Current.GoToAsync($"//{nameof(MainMenuPage)}");
         }
-
-        // Draw the score
-        canvas.FontColor = Colors.White;
-        canvas.FontSize = 50;
-        canvas.DrawString($"{AppResources.Score}: {Score}", 25, 25, 1000, 100, HorizontalAlignment.Left, VerticalAlignment.Top);
     }
 
     public void Touch()

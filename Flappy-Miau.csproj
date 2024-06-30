@@ -15,7 +15,7 @@
         <OutputType>Exe</OutputType>
         <RootNamespace>Flappy_Miau</RootNamespace>
         <UseMaui>true</UseMaui>
-        <MauiVersion>8.0.40</MauiVersion>
+        <MauiVersion>8.0.61</MauiVersion>
         <SingleProject>true</SingleProject>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>

@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Flappy_Miau.Models;
 using System.Collections.ObjectModel;
 
 namespace Flappy_Miau.ViewModels;
@@ -29,17 +30,5 @@ public partial class HighScoreViewModel : ObservableObject
         // Add new score to the list and sort it
         HighScores.Add(new Score(DateTime.Now, value));
         HighScores = new ObservableCollection<Score>(HighScores.OrderByDescending(x => x.Value));
-    }
-}
-
-public class Score
-{
-    public DateTime Date { get; set; }
-    public int Value { get; set; }
-
-    public Score(DateTime date, int value)
-    {
-        Date = date;
-        Value = value;
     }
 }
