@@ -61,6 +61,15 @@ namespace Flappy_Miau.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit Game.
         /// </summary>
         internal static string ExitGame {

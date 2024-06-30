@@ -7,10 +7,61 @@
     x:Class="Flappy_Miau.Views.HighScorePage"
     x:DataType="viewModels:HighScoreViewModel"
     Title="{x:Static localization:AppResources.HighScore}">
-    <VerticalStackLayout>
-        <Label
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center"
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <CollectionView
+        WidthRequest="800"
+        ItemsSource="{Binding HighScores}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate
+                x:DataType="viewModels:Score">
+                <Border>
+                    <Grid
+                        ColumnDefinitions="Auto, 500, Auto, Auto"
+                        RowDefinitions="1*, 1*"
+                        ColumnSpacing="10"
+                        RowSpacing="10"
+                        Padding="10">
+                        <Label
+                            Grid.Column="0"
+                            Grid.RowSpan="2"
+                            VerticalOptions="Center"
+                            FontFamily="FontAwesome"
+                            Text="{StaticResource Star}"
+                            Style="{StaticResource Headline}"
+                            TextColor="Gold" />
+                        <Label
+                            Grid.Column="1"
+                            Grid.RowSpan="2"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Text="{Binding Value}"
+                            Style="{StaticResource Headline}" />
+                        <Label
+                            Grid.Column="2"
+                            Grid.Row="0"
+                            FontFamily="FontAwesome"
+                            Text="{StaticResource Calendar}"
+                            Style="{StaticResource SubHeadline}"
+                            TextColor="Silver" />
+                        <Label
+                            Grid.Column="3"
+                            Grid.Row="0"
+                            Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}"
+                            Style="{StaticResource SubHeadline}" />
+                        <Label
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            FontFamily="FontAwesome"
+                            Text="{StaticResource Clock}"
+                            Style="{StaticResource SubHeadline}"
+                            TextColor="Silver" />
+                        <Label
+                            Grid.Column="3"
+                            Grid.Row="1"
+                            Text="{Binding Date, StringFormat='{0:HH:mm:ss}'}"
+                            Style="{StaticResource SubHeadline}" />
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

@@ -3,6 +3,8 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <x:String x:Key="Calendar">&#xf133;</x:String>
+    <x:String x:Key="Clock">&#xf017;</x:String>
     <x:String x:Key="Play">&#xf04b;</x:String>
     <x:String x:Key="Star">&#xf005;</x:String>
     <x:String x:Key="Stop">&#xf04d;</x:String>
