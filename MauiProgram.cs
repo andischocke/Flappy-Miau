@@ -1,4 +1,5 @@
-﻿using Flappy_Miau.ViewModels;
+﻿using Flappy_Miau.Services;
+using Flappy_Miau.ViewModels;
 using Flappy_Miau.Views;
 using Microsoft.Extensions.Logging;
 
@@ -13,7 +14,8 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .ConfigureFonts(RegisterFonts)
             .RegisterViewModels()
-            .RegisterViews();
+            .RegisterViews()
+            .RegisterServices();
 
 #if DEBUG
         mauiAppBuilder.Logging.AddDebug();
@@ -27,6 +29,12 @@ public static class MauiProgram
         fonts.AddFont("FontAwesome-Sharp-Regular-400.ttf", "FontAwesome");
         fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
         fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+    }
+
+    public static MauiAppBuilder RegisterServices(this MauiAppBuilder mauiAppBuilder)
+    {
+        mauiAppBuilder.Services.AddSingleton<Database>();
+        return mauiAppBuilder;
     }
 
     public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)

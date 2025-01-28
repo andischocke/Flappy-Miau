@@ -1,34 +1,29 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Flappy_Miau.Models;
+using Flappy_Miau.Services;
 using System.Collections.ObjectModel;
 
 namespace Flappy_Miau.ViewModels;
 
 public partial class HighScoreViewModel : ObservableObject
 {
+    private Database Database { get; set; }
+
     [ObservableProperty]
     private ObservableCollection<Score> highScores;
 
-    public HighScoreViewModel()
+    public HighScoreViewModel(Database database)
     {
+        Database = database;
         HighScores = new ObservableCollection<Score>();
-        CreateDummyScores(100);
+        ReadScoresCommand.Execute(null);
     }
 
-    public void CreateDummyScores(int count)
+    [RelayCommand]
+    private async Task ReadScores()
     {
-        for (int i = 0; i < count; i++)
-        {
-            // Random value between 0 and 10000
-            int value = new Random().Next(0, 10000);
-            SaveScore(value);
-        }
-    }
-
-    public void SaveScore(int value)
-    {
-        // Add new score to the list and sort it
-        HighScores.Add(new Score(DateTime.Now, value));
-        HighScores = new ObservableCollection<Score>(HighScores.OrderByDescending(x => x.Value));
+        List<Score> scores = await Database.ReadTable<Score>();
+        HighScores = new ObservableCollection<Score>(scores.OrderByDescending(x => x.Value));
     }
 }
