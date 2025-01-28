@@ -11,7 +11,6 @@ public class Database
     {
         Connection = Connect();
         CreateTables();
-        Populate();
     }
 
     private SQLiteAsyncConnection Connect()
@@ -35,16 +34,5 @@ public class Database
     public async Task CreateItem<T>(T item)
     {
         await Connection.InsertAsync(item);
-    }
-
-    // Populate the database with 100 random scores
-    public void Populate()
-    {
-        Random random = new Random();
-        for (int i = 0; i < 100; i++)
-        {
-            Score score = new Score(DateTime.Now.AddDays(-i), random.Next(0, 10000));
-            Connection.InsertAsync(score);
-        }
     }
 }

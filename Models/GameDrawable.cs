@@ -1,5 +1,4 @@
 ﻿using Flappy_Miau.Resources.Localization;
-using Flappy_Miau.Views;
 
 namespace Flappy_Miau.Models;
 
@@ -13,6 +12,8 @@ public class GameDrawable : IDrawable
     private float Velocity { get; set; }
     private float Gravity { get; set; }
     public int Score { get; set; }
+
+    public event Action? GameOver;
 
     public GameDrawable()
     {
@@ -93,13 +94,8 @@ public class GameDrawable : IDrawable
         // Check if player collides with any bounds or obstacles
         if (Player.IntersectsWith(Bounds.Upper) || Player.IntersectsWith(Bounds.Lower) || Obstacles.Any(obstacle => Player.IntersectsWith(obstacle)))
         {
-            // Reset the game
-            Obstacles.Clear();
-            Player = new RectF((float)DisplayWidth / 2, (float)DisplayHeight / 2, 100, 100);
-            Velocity = 0f;
-            Score = 0;
-            // Absolute navigation to the high score page
-            Shell.Current.GoToAsync($"//{nameof(MainMenuPage)}");
+            // Invoke the GameOver event
+            GameOver?.Invoke();
         }
     }
 
